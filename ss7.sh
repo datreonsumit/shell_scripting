@@ -1,0 +1,1 @@
+echo The total number of items un the current directory is=$# 

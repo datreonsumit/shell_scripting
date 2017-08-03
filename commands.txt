@@ -1,0 +1,683 @@
+//Select Only few columns in a file
+cut command 
+cut -d"," -f 1,2,4 filename.txt
+
+//Convert lower case to uppercase
+dd command
+dd if=test of=out conv=ucase 
+
+dd if=mystory.txt of=MYSTORY.txt conv=ucase
+
+convert ascii file to europian file
+dd if=test of=test2 conv=ebcdic
+
+//check syntax using man command
+man cat 
+banner I am a Bad Programmer
+
+//compress file
+compress -v test.txt
+
+//view compressed file
+zcat filename.txt
+
+//uncompressed a file
+uncompress -v compressedfile.z
+
+//Comment a line with #
+#single line comment
+#as for multiple comment
+
+//Use commands in your scripts
+ss2.sh
+pwd
+ls -l 
+banner "The End"
+
+//Positional Parameters
+sh ss4.sh test output
+
+#ss4.sh
+#This file takes a file name as an argument and renames it 
+echo "Provide a file name"
+read name
+mv $1 $name
+cat $name
+
+//Positional Parameters
+sh ss5.sh ss1.sh
+
+#ss5.sh
+chmod 744 $1
+ls -l $1
+
+//Set commands
+type in terminal:-
+set Shell Scripting is COOL
+
+echo $1 :- Output- Shell
+echo $2 :- Output- Scripting
+echo $3 :- Output- is
+echo $4 :- Output- COOL
+
+//Show all the input written in set command
+echo $*
+Output:- Shell Scripting is COOL
+
+video 21//----------------------------
+Reverse Quotes Or Accesnt Graves
+cat > test
+My neighbour dog is annoying
+ls
+echo $*
+
+create ss6.sh file
+#Renames a file to file.name
+#where name is the login name of the user executing the script
+name=$1
+set `who am i`
+mv $name $name.$1
+
+---# Execute the statement in terminal
+sh ss6.sh test
+Output:- test.ultron
+
+--------------------------------
+Video 22:- Count the number of command line arguments
+$#
+
+
+Video 23 Math on integers using 'EXPR'
+Create a script file ss8.sh
+#Arithmetic operations
+a=30 b=15
+echo `expr $a + $b`
+echo `expr $a - $b`
+echo `expr $a \* $b`
+echo `expr $a / $b`
+echo `expr $a % $b`
+
+Terminal :- sh ss8.sh 
+O/P:- 
+45
+15
+450
+2
+0
+
+------------------------------
+Video 24:- Operator Precedence(Not Clear)
+file ss8.sh
+#Arithmetic operations
+a=30 b=15 c=2 d=5
+
+echo `expr $a \* \($b + $c \) / $d`
+
+Output:- Error
+
+Video 25:- Math on Real Number 
+create file ss9.sh
+#Floating Point Arithmetic
+a=10.5
+b=3.5
+c=`echo $a + $b | bc`
+d=`echo $a - $b | bc`
+e=`echo $a \* $b | bc`
+f=`echo $a / $b | bc`
+echo $c $d $e $f
+
+In Terminal :-
+sh ss9.sh 
+
+Video 26:- Escape Sequences
+Create a file ss10.sh 
+#Escape Sequences
+echo "\033[1mHey World,what's up?\033[0m" // This converts the chacter into bold
+echo "\033[7mHey World,what's up?\033[0m" //This changes the background color of line 
+
+other escape sequences are
+\t for tab(5 spaces)
+\r for carriage return 
+\n for newline character
+\b for backline character
+
+Video 27:- tput Commands
+the 'tput' command to change text-display settings, position the cursor at any location on the terminal and to determine the number of rows and columns in your terminal.
+
+//Create file ss11.sh
+#tputin action
+tput clear
+echo "Total number of rows on screen=\c"
+tput lines
+echo "Total number of columns on screen=\c"
+tput cols
+tput cup 15 20 
+tput bold
+echo "This should be in bold"
+echo "\033[0mBye Bye" 
+
+Video 28:- if-then Statement in Actions
+
+#if-then statement in action
+echo "Enter source and target file name"
+read source target
+if mv $source $target
+then 
+echo "Your fiel has been successfully renamed"
+fi
+
+
+Video 29:- if then else
+Anything b/w then to else is the "IF" Block
+Anything b/w else to fi keyword is the else block
+Create a file called if-then-else.sh:-  
+---------------------------------------------
+#if-then-else statement in action
+echo "Enter so urce and target file name"
+read source target
+if mv $source $target
+then 
+echo "Your fiel has been successfully renamed"
+else 
+echo "The file would not been created"
+fi
+
+In Termical:- sh if-then-else.sh 
+Enter source and target file name
+random youtube // There is no file named as random So error occured
+
+Video 30:- Run Checks on Numbers:-
+echo "Enter a number between 10 & 20:\c"
+read num
+if [ $num -lt 10 ]
+then 
+	echo "That was under the belt partner."
+elif [ $num -gt 20 ]
+then 
+	echo "That went over my head."
+else 
+	echo "Now you are making sense!"
+fi
+
+Video 31:- Run Checks On Files
+
+Video 32:- Append text to a file through shell script
+//Craete a file name:- append.sh (Append a text to the test file)
+echo "Enter file name:\c"
+read fname
+if [ -f $fname ]
+then
+		if [ -w $fname ]
+		then
+				echo "Type matter to append. To Quit press ctrl +d."
+				cat >> $fname
+		else
+				echo "You do not have permission to write."
+		fi
+fi
+
+Video 33:- Run Checks on String
+// hERE in output :- 1 occurs when condition evaluates to false
+-z measures the length of the string
+//Create a file named string-test.sh
+#String Checks
+
+str1="Hey You!"
+str2="What's up?"
+str3="" 
+
+[ "$str1" = "$str2" ]
+echo $?
+
+[ "$str1" != "$str2" ]
+echo $?
+
+[ -n "$str1" ]
+echo $?
+
+[ -z "$str3" ]
+echo $?
+
+Video 34:- The "AND" Logical Operator
+//Create a file called and.sh
+echo "Enter a number between 50 and 100:\c"
+read num
+if [ $num -le 100 -a $num -ge 50 ]
+then 
+		echo "You are within limits."
+else
+		echo "You are out of limits."
+fi
+
+//Here in the above line AND is represented as -a
+
+
+Video 35:- Count the number of characters in Users input in your Scipt
+//Created a file named:- count.sh
+echo "Enter a character:\c"
+read var
+if [ `echo $var | wc -c` -eq 2 ]
+then 
+		echo "You entered a character."
+else
+		echo "Invalid input"
+fi
+
+Video 36:- The "OR" logocal Operator
+create a file names as :- or.sh
+echo "Enter a lowercase character:\c"
+read var
+if [ `echo $var | wc -c` -eq 2 ]
+then 
+		if [ $var = a -o $var = e -o $var = i -o $var = o -o $var = u ]
+		then 
+				echo "You entered a vowel."
+		else
+				echo "You didn't enter a vowel."
+		fi
+else
+		echo "Invalid input"
+fi
+
+Video 37:- The 'case' Statement
+//Check if the entered character is uppercase or lowercase 
+//create a file case.sh
+//Case Statement
+echo "Enter a character:\c"
+read var 
+case $var in 
+[a-z])
+		echo "You entered a lower case alphabet"
+	    ;; # by using ;; denotes that we are going out of the above case
+[A-Z])
+		echo "You Entered an uppercase alphabet"
+		;;
+[0-9])
+		echo "You entered a digit"
+		;;
+?)
+		echo "You Entered a special symbol."
+		;;
+*)
+		echo "You Entered more than one characters."
+		;;
+esac
+
+Video 38:- Another Date With 'case' Statement
+// create a file word.sh
+echo "Enter a word:\c"
+read word
+case $word in 
+[aeiou]* | [AEIOU]*)
+					echo "The word begins with a vowel."
+					;;
+[0-9]*)
+					echo "The word begins with a digit."
+					;;
+*[0-9])
+					echo "The word ends with a digit."
+					;;
+???)
+					echo "You Entered a three letter word."
+					;;
+*)
+					echo "I don't know what you have entered."
+					;;
+esac
+
+Video 39:- the "WHILE" Loop
+//create a file called while.sh
+#while loop in action
+count=5
+while [ $count -le 15 ]
+do 
+		echo $count
+		count=`expr $count + 1`
+done
+
+Video 40:- The 'Until' Loop
+//Create a file until.sh
+#until loop in action
+count=1
+until [ $count -ge 10 ] //Didn't get what is -ge 
+do
+	echo $count
+	count=`expr $count + 1`
+done
+
+Video 41:- The For Loop
+//create a file called for.sh
+//Check directories in 
+for item in *
+do
+		if [ -d $item ]
+		then 
+				echo $item
+		fi
+done
+
+Video 43:- Search Pattern Using 'grep'
+grep -i -n -c Create commands.txt 
+-i stands for case insensitive
+-n stands for line numbers in a text file
+-c stands for count the number of lines
+-v stands for showing thw lines which doesn't have the "****" word
+
+//Read man page of Grep command
+man grep
+
+Video-44: The 'passwd' File Explained
+cat /etc/passwd
+There are 7 fields in this
+1st Field:- username (ex:- ultron)
+2nd Field:- shows x (means password is encrypted)
+3rd Field:- Userid Field (ex:- rootID is 0)
+4th Field:- GroupID
+5th Field:- name of the computer
+6th Field:- Home Folder
+7th Field:- Shell name(ex:- /bin/bash)
+
+Video 45:- The Internal Field Separator(IFS)
+set command
+
+line="Shell:Scripting:is:fun."
+IFS=:
+set $line
+echo $1
+echo $2
+echo $3
+echo $4
+
+Video 46:- passwd File revisted
+//Create a file pinfo.sh
+echo "Enter user name:\c"
+read logname
+line=`grep $logname /etc/passwd`
+IFS=:
+set $line
+echo "Username:$1"
+echo "User ID:$3"
+echo "Group ID:$4"
+echo "Comment Field:$5"
+echo "Home Folder:$6"
+echo "Default Shell:$7"
+
+Output:- 
+Enter user name:ultron
+Username:ultron
+User ID:1000
+Group ID:1000
+Comment Field:ultron,,,
+Home Folder:/home/ultron
+Default Shell:/bin/bash
+
+Video 47:- Reading From a File
+//create a file read.sh
+//Change default input stream from keyboard to file USE EXEC 
+//Didn't get the below program 
+
+echo "Enter a file name:\c"
+read fname
+if [ -z "$fname" ]
+	then
+		exit
+fi
+
+terminal=`tty` # here tty is a command
+
+exec < $fname
+
+count=1
+
+while read line
+do
+		echo $count.$line
+		count=`expr $count + 1`
+done
+
+exec < $terminal
+
+Video 48:- Sleep Command
+//Create a file sleep.sh
+echo "Enter a Sentence:\c"
+read str
+for word in $str
+do 
+		echo $word
+		sleep 2
+done
+
+Video 49:- Count the number of words & sentences in a text file without using 'wc'
+echo "Enter a filename:\c"
+read fname
+
+terminal=`tty`
+
+exec < $fname
+
+nol=0
+now=0
+
+while read line
+do 
+		nol=`expr $nol + 1`
+		set $line
+		now=`expr $now + $#`
+done
+
+echo "Number of lines:$nol"
+echo "Number of words:$now"
+
+exec < $terminal
+
+Video 50:- Fetch & Redirect Man Pages of commands using 'for loop'
+//Create a text file commandlist
+//Create a sh file named as:- help.sh
+//fetch the man pages of commands
+for cmd in `cat commandlist`
+do 
+		man $cmd >> helpfile
+done
+
+Video 51:- Nested Loops
+a=1
+while [ $a -le 3 ]
+do
+	b=1
+	while [ $b -le 3 ]
+	do 
+			c=1
+			while [ $c -le 3 ]
+			do
+				echo "$a$b$c"
+				c=`expr $c + 1`
+			done
+			b=`expr $b + 1`
+		done
+		a=`expr $a + 1`
+	done
+
+
+Video 52:- The "break" Statement
+//break throgh u out of loop
+//create a file break.sh
+count=1
+while [ $count -le 10 ]
+do
+		if [ $count -eq 6 ]
+			then 
+			break
+		fi
+		echo $count
+		count=`expr $count + 1`
+done
+
+echo "We are out of the loop."
+
+Video 53:- The 'continue' Statement
+//continue through u to the beginning of the loop
+
+count=0
+while [ $count -le 9 ]
+do
+	count=`expr $count + 1`
+	if [ $count -eq 5 ]
+		then
+			continue
+		fi
+		echo $count
+done
+
+echo "We are out of the loop"
+
+Video 54:- More on MetaCharacters
+//Type multiple commands in a single line
+//Here copy the selected words & paste them into some other file nanmed as text1
+grep -i create commands.txt > text1 && echo "Your task was completed."
+
+Video 55:- Adding and removing users
+sudo login
+username
+password
+
+Video 56:- Know when users log in Part One
+echo "Enter user Name"
+read logname
+
+time=0
+
+while true 
+do
+	who | grep "$logname" > /dev/null
+	if [ $? -eq 0 ]
+		then
+			echo "$logname has logged in."
+			if [ $time -ne 0 ]
+				then 
+				echo "$logname was $time minutes late in logging in."
+				fi
+				exit
+			else
+					time=`expr $time + 1`
+					sleep 60
+			fi
+done 
+
+Video 57:- know when users log in part Two
+echo "Enter user Name"
+read logname
+
+grep "$logname" /etc/passwd > /dev/null
+
+if [ $? -eq 0 ]
+then 
+		echo "Wait..."
+else 
+		echo "User not found"
+		exit
+fi
+
+time=0
+
+while true 
+do
+	who | grep "$logname" > /dev/null
+	if [ $? -eq 0 ]
+		then
+			echo "$logname has logged in."
+			if [ $time -ne 0 ]
+				then 
+				echo "$logname was $time minutes late in logging in."
+				fi
+				exit
+			else
+					time=`expr $time + 1`
+					sleep 1
+			fi
+done 
+
+Video 58:- Know when users log in Final Part
+
+//Not Working for me
+echo "Enter user Name"
+read logname
+
+grep "$logname" /etc/passwd > /dev/null
+
+if [ $? -eq 0 ]
+then 
+		echo "Wait..."
+else 
+		echo "User not found"
+		exit
+fi
+
+time=0
+
+while true 
+do
+	who | grep "$logname" > /dev/null
+	if [ $? -eq 0 ]
+		then
+			echo "$logname has logged in."
+			if [ $time -ne 0 ]
+				then 
+				if [ $time -gt 60 ]
+					then
+							min=`expr $time / 60`
+							sec=`expr $time % 60
+				echo "$logname was $min minutes and $sec seconds late in llogging in."
+			else
+				sec=$time
+				echo "$logname was $sec seconds late in logging in"
+				fi
+				exit
+			else
+					time=`expr $time + 1`
+					sleep 60
+			fi
+done
+
+Video 59:- Communicate with others users using 'write'
+Condition:-
+1) User is logged in 
+2) message port is opened
+
+write command
+finger command
+
+Video 60:- Create your own commands using functions
+//Create a file func.sh
+youtube()
+{
+	echo "Good Morning."
+}
+byebye()
+{
+	cal
+}
+
+//Now change permissions in terminal 
+chmod +x func.sh
+
+
+Video 61:- Executing multiple scripts
+//Create 3 files script1.sh, script2.sh, script3.sh
+
+//create file script1.sh
+banner "Script 1"
+
+sh script2.sh
+
+//create file script2.sh
+banner "Script 2"
+
+sh script3.sh
+
+//create file script3.sh
+banner "Script 3"
+
+
+
+
+Youtube Channel Name:- The Bad tutorials
